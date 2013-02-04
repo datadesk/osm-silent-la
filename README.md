@@ -1,9 +1,7 @@
-<pre><code>                                      
- _____ _ _         _      __    _____ 
+<pre><code> _____ _ _         _      __    _____ 
 |   __|_| |___ ___| |_   |  |  |  _  |
 |__   | | | -_|   |  _|  |  |__|     |
 |_____|_|_|___|_|_|_|    |_____|__|__|
-                                      
 </code></pre>
 
 A template for a black base layer about Southern California. Designed for overlaying bright data visualizations. Created with open data. Configured for [TileMill](http://mapbox.com/tilemill/) and [Mapnik](http://mapnik.org). Ready to deploy to Amazon S3 using [Fabric](https://github.com/fabric/fabric), [invar](https://github.com/onyxfish/invar) and [boto](https://github.com/boto/boto). 
