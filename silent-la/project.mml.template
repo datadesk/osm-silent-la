@@ -1,0 +1,214 @@
+{
+  "bounds": [
+    -120,
+    33.2,
+    -117.25,
+    34.5
+  ],
+  "center": [
+    -118.3201,
+    34.0676,
+    11
+  ],
+  "format": "png",
+  "interactivity": false,
+  "minzoom": 9,
+  "maxzoom": 15,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "style.mss",
+    "roads.mss",
+    "places.mss"
+  ],
+  "Layer": [
+    {
+      "geometry": "polygon",
+      "extent": [
+        -124.40959100000003,
+        32.53415700000002,
+        -114.131212,
+        42.00951690946478
+      ],
+      "id": "state",
+      "class": "",
+      "Datasource": {
+        "file": "./layers/state/tl_2010_06_state00_Clip.shp"
+      },
+      "srs-name": "autodetect",
+      "srs": "",
+      "advanced": {},
+      "name": "state"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -124.90590309850906,
+        28.009211430996924,
+        -113.33255793838326,
+        43.6166289350576
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT way, highway AS type\n  FROM planet_osm_roads\n  WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'motorway_link', 'trunk_link')) as data",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13904461.53,3250135.19,-12616122.64,5406305.04",
+        "dbname": "osm_california",
+        "host": "localhost",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "roads-medium",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "roads-medium"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -118.66438582395605,
+        33.70306316318076,
+        -118.15573531341013,
+        34.33825398801666
+      ],
+      "id": "la",
+      "class": "",
+      "Datasource": {
+        "file": "./layers/la/la.shp",
+        "id": "la",
+        "project": "silent-la",
+        "srs": ""
+      },
+      "srs-name": "autodetect",
+      "srs": "",
+      "advanced": {},
+      "name": "la"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -124.90590309850906,
+        28.009211430996924,
+        -112.49954685165267,
+        43.6166289350576
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( \nSELECT way,name,highway, \nchar_length(trim(both ' ' from regexp_replace(regexp_replace(ref, 'CA |US |I  |I|SR', ''), ';.*', ''))) as ref_len,\ntrim(both ' ' from regexp_replace(regexp_replace(ref, 'CA |US |I  |I|SR', ''), ';.*', '')) as ref, \nCASE WHEN oneway in\n  ('yes','true','1') THEN 'yes'::text END as oneway,\nCASE WHEN strpos(ref, 'I') != 0 THEN 'I'::text\n\tWHEN strpos(ref, 'US') != 0 THEN 'US'::text \n\tWHEN strpos(ref, 'CA') != 0 THEN 'CA'::text \n\tWHEN strpos(ref, 'SR') != 0 THEN 'SR'::text \nEND as \"type\"\nFROM planet_osm_line\nWHERE \"highway\" IS NOT NULL\nAND (\"name\" is not null or \"oneway\" is not null)\nORDER BY z_order ASC\n) as highway_label",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13904461.53,3250135.19,-12523392.27,5406305.04",
+        "dbname": "osm_california",
+        "host": "localhost",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "shields",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "shields"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -124.90590309850906,
+        28.009211430996924,
+        -112.49954685165267,
+        43.6166289350576
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( SELECT way, highway AS type, name, ref, oneway, CHAR_LENGTH(ref) AS reflen\n    FROM planet_osm_line\n    WHERE highway IN ('motorway', 'trunk')\n      AND (name IS NOT NULL OR ref IS NOT NULL)\n) AS data\n",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13904461.53,3250135.19,-12523392.27,5406305.04",
+        "dbname": "osm_california",
+        "host": "localhost",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "motorway-labels",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "motorway-labels"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -124.90590309850906,
+        28.009211430996924,
+        -112.49954685165267,
+        43.6166289350576
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( SELECT way, highway AS type, name, oneway\n  FROM planet_osm_line\n  WHERE (name IS NOT NULL OR oneway IN ('yes', 'true', '1', '-1'))\n    AND highway IN ('primary', 'secondary', 'tertiary')\n) AS data",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13904461.53,3250135.19,-12523392.27,5406305.04",
+        "dbname": "osm_california",
+        "host": "localhost",
+        "user": "postgres",
+        "password": "postgres"
+      },
+      "id": "mainroad-labels",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "mainroad-labels"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -118.668176,
+        33.7045379821,
+        -118.155289,
+        34.337306718
+      ],
+      "id": "neighborhoods",
+      "class": "",
+      "Datasource": {
+        "file": "./layers/neighborhoods/la_city.shp"
+      },
+      "srs-name": "autodetect",
+      "srs": "",
+      "advanced": {},
+      "name": "neighborhoods"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -124.26947499999999,
+        32.534175,
+        -114.229023,
+        41.993227
+      ],
+      "id": "census-places",
+      "class": "",
+      "Datasource": {
+        "file": "./layers/census-places/tl_2010_06_place10.shp"
+      },
+      "srs-name": "autodetect",
+      "srs": "",
+      "advanced": {},
+      "name": "census-places"
+    }
+  ],
+  "scale": 1,
+  "metatile": 2,
+  "attribution": "Los Angeles Times Data Desk",
+  "description": "A black base layer for overlaying bright data about Southern California",
+  "name": "Silent LA",
+  "version": "0.1.0"
+}
