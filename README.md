@@ -12,7 +12,7 @@ A template for a black base layer about Southern California. Designed for overla
 
 ## Layers
 
-* Roads, water, landuse and buildings by [OpenStreetMap](http://www.openstreetmap.org/) using a state extract published by [Geofabrik](http://www.geofabrik.de)
+* Roads by [OpenStreetMap](http://www.openstreetmap.org/) using a state extract published by [Geofabrik](http://www.geofabrik.de)
 * Places by the U.S. Census via [census.ire.org](census.ire.org)
 * Neighborhoods and regions by The Times' [Mapping LA project](http://mapping.la)
 
