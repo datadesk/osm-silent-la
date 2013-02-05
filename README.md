@@ -33,9 +33,6 @@ $ cd osm-silent-la
 $ . bin/activate
 # Pull down this repository into a subdirectory
 $ git clone https://github.com/datadesk/osm-silent-la.git repo
-# Install the dependencies
-$ cd repo
-$ pip install -r requirements.txt
 ```
 
 Create a symbolic link installing Quite LA inside Mapbox's project directory. You'll need to substitute your path below. 
