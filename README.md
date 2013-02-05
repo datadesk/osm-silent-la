@@ -6,6 +6,8 @@
 
 A template for a black base layer about Southern California. Designed for overlaying bright data visualizations. Created with open data. Configured for [TileMill](http://mapbox.com/tilemill/) and [Mapnik](http://mapnik.org). Ready to deploy to Amazon S3 using [Fabric](https://github.com/fabric/fabric), [invar](https://github.com/onyxfish/invar) and [boto](https://github.com/boto/boto). 
 
+Read more in [this introductory post](http://datadesk.latimes.com/posts/2013/02/introducing-silent-la/).
+
 ![DTLA](https://raw.github.com/datadesk/osm-silent-la/master/samples/0.1.0/dtla.png)
 
 ## Layers
