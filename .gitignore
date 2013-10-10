@@ -1,5 +1,5 @@
-quiet-la/fonts/*
-quiet-la/project.mml
+silent-la/fonts/*
+silent-la/project.mml
 *.pyc
 *.osm.bz2
 settings_private.py
