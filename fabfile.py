@@ -42,7 +42,7 @@ def download_osm(state='california'):
     """
     print('Updating OpenStreetMap slice for the state of %s' % state.title())
     # Figure out what file we want
-    bz2 = '%s.osm.bz2' % state
+    bz2 = '%s-latest.osm.bz2' % state
     # Delete it from the local folder if it already exists
     if os.path.exists('./%s' % bz2):
         print('- Deleting existing OpenStreetMap bz2 from this directory')
